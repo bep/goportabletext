@@ -2,7 +2,10 @@ module github.com/bep/goportabletext
 
 go 1.23
 
-require github.com/go-quicktest/qt v1.101.0
+require (
+	github.com/go-quicktest/qt v1.101.0
+	github.com/mitchellh/mapstructure v1.5.0
+)
 
 require (
 	github.com/google/go-cmp v0.5.9 // indirect

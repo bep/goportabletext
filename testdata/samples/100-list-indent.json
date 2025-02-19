@@ -1,0 +1,98 @@
+[
+  {
+    "_key": "7c3175d95f4f",
+    "_type": "block",
+    "children": [
+      {
+        "_key": "bdde49aeda85",
+        "_type": "span",
+        "marks": [],
+        "text": "Li1"
+      }
+    ],
+    "level": 1,
+    "listItem": "number",
+    "markDefs": [],
+    "style": "normal"
+  },
+  {
+    "_key": "fa2c2396a597",
+    "_type": "block",
+    "children": [
+      {
+        "_key": "f40bf22c54d1",
+        "_type": "span",
+        "marks": [],
+        "text": "Li2"
+      }
+    ],
+    "level": 1,
+    "listItem": "number",
+    "markDefs": [],
+    "style": "normal"
+  },
+  {
+    "_key": "641b997043de",
+    "_type": "block",
+    "children": [
+      {
+        "_key": "74cf77c95747",
+        "_type": "span",
+        "marks": [],
+        "text": "Li2-1\n\nSome more text in Li2-1.\nEven more text.\n\nA new paragraph in Li2-1."
+      }
+    ],
+    "level": 2,
+    "listItem": "number",
+    "markDefs": [],
+    "style": "normal"
+  },
+  {
+    "_key": "7c166c6834d7",
+    "_type": "block",
+    "children": [
+      {
+        "_key": "cba9dc53c863",
+        "_type": "span",
+        "marks": [],
+        "text": "Bullet 1"
+      }
+    ],
+    "level": 1,
+    "listItem": "bullet",
+    "markDefs": [],
+    "style": "normal"
+  },
+  {
+    "_key": "b25aa1d06ba5",
+    "_type": "block",
+    "children": [
+      {
+        "_key": "1d047eb9a249",
+        "_type": "span",
+        "marks": [],
+        "text": "Bullet2"
+      }
+    ],
+    "level": 1,
+    "listItem": "bullet",
+    "markDefs": [],
+    "style": "normal"
+  },
+  {
+    "_key": "7467a347490f",
+    "_type": "block",
+    "children": [
+      {
+        "_key": "6a42ca7f8b1b",
+        "_type": "span",
+        "marks": [],
+        "text": "Bullet2 indented.\n\nSome more text.\nEven more text.\n\nA paragraph."
+      }
+    ],
+    "level": 2,
+    "listItem": "bullet",
+    "markDefs": [],
+    "style": "normal"
+  }
+]

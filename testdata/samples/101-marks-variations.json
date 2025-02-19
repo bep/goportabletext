@@ -1,0 +1,58 @@
+[
+  {
+    "_key": "a0f5f4395feb",
+    "_type": "block",
+    "children": [
+      {
+        "_key": "4b3e0f79ce71",
+        "_type": "span",
+        "marks": [],
+        "text": "This is "
+      },
+      {
+        "_key": "4506c348ba6a",
+        "_type": "span",
+        "marks": ["strong"],
+        "text": "bold."
+      },
+      {
+        "_key": "4c64dd0d1e6f",
+        "_type": "span",
+        "marks": [],
+        "text": " This is"
+      },
+      {
+        "_key": "b11f33418423",
+        "_type": "span",
+        "marks": ["em", "strong"],
+        "text": " italic and bold. "
+      },
+      {
+        "_key": "cf10ecafb9fb",
+        "_type": "span",
+        "marks": [],
+        "text": "This is a "
+      },
+      {
+        "_key": "507c2d165074",
+        "_type": "span",
+        "marks": ["1d217bfd4fa0", "strong"],
+        "text": "bold link"
+      },
+      {
+        "_key": "5105a564b66c",
+        "_type": "span",
+        "marks": [],
+        "text": "."
+      }
+    ],
+    "markDefs": [
+      {
+        "_key": "1d217bfd4fa0",
+        "_type": "link",
+        "href": "https://example.org"
+      }
+    ],
+    "style": "normal"
+  }
+]
