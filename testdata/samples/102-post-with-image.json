@@ -1,0 +1,35 @@
+[
+  {
+    "_key": "c701427e2a76",
+    "_type": "block",
+    "children": [
+      {
+        "_key": "c6e05c0cb8c7",
+        "_type": "span",
+        "marks": [],
+        "text": "Sunrise:"
+      }
+    ],
+    "markDefs": [],
+    "style": "normal"
+  },
+  {
+    "_key": "f78bf8ce4854",
+    "_type": "image",
+    "asset": {
+      "_id": "image-7826651cc48ccf102252a7f86d4dcb66c198284c-480x300-jpg",
+      "altText": "Sunrise Alt Text",
+      "description": "Sunrise Description",
+      "metadata": {
+        "dimensions": {
+          "aspectRatio": 1.6,
+          "height": 300,
+          "width": 480
+        }
+      },
+      "path": "images/myproject/production/7826651cc48ccf102252a7f86d4dcb66c198284c-480x300.jpg",
+      "title": "Sunrise Title",
+      "url": "https://cdn.sanity.io/images/myproject/production/7826651cc48ccf102252a7f86d4dcb66c198284c-480x300.jpg"
+    }
+  }
+]
