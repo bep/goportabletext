@@ -298,7 +298,7 @@ func (m *markdownWriter) writeChild(i, level int, children []portabletext.Child)
 
 func (m *markdownWriter) writeImage(img portabletext.Image) {
 	m.writeNewline()
-	m.writeString(fmt.Sprintf("![%s](%s)", "", img.Asset.URL))
+	m.writeString(fmt.Sprintf("![%s](%s)", img.Asset.AltText, img.Asset.URL))
 }
 
 func (m *markdownWriter) writeIndent(level int) {
@@ -319,7 +319,7 @@ func (m *markdownWriter) writeList(b portabletext.Block) {
 	case "square":
 		m.writeString("- ")
 	default:
-		panic(fmt.Sprintf("unknown list item: %q", b.ListItem))
+		m.writeString("* ")
 	}
 }
 
@@ -340,8 +340,7 @@ func (m *markdownWriter) writeMark(start bool, s string) {
 		// Try to find the markDef.
 		md, found := m.markDefs[s]
 		if !found {
-			panic(fmt.Sprintf("mark not found: %q", s)) // TODO1
-			// return
+			return
 		}
 		switch md.Type {
 		case "link":
@@ -353,7 +352,7 @@ func (m *markdownWriter) writeMark(start bool, s string) {
 				m.writeString(")")
 			}
 		default:
-			panic("unknown mark type")
+			panic("unsupported mark type: " + md.Type)
 		}
 
 	}
@@ -414,7 +413,7 @@ func (m *markdownWriter) writeStyle(b portabletext.Block) {
 		case "h6":
 			m.writeString("###### ")
 		default:
-			panic(fmt.Sprintf("unknown style: %q", style))
+			return
 		}
 	}
 }

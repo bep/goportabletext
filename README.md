@@ -5,3 +5,5 @@
 WORK IN PROGRESS.
 
 Converts [Portable Text](https://www.portabletext.org/) to Markdown.
+
+Note that the image handling is currently very simple; we link to the `asset.url` using `asset.altText` as the image alt text and `asset.title` as the title.

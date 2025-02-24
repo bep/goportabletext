@@ -76,24 +76,23 @@ func (b Block) HasText() bool {
 }
 
 type Image struct {
-	Asset Asset `json:"asset"`
+	Asset Asset `json:"asset" mapstructure:"asset"`
 }
 
 type Asset struct {
-	ID        string `json:"_id" mapstructure:"_id"`
-	Rev       string `json:"_rev" mapstructure:"_rev"`
-	AssetID   string `json:"assetId" mapstructure:"assetId"`
-	Extension string `json:"extension" mapstructure:"extension"`
-	Metadata  struct {
+	ID          string `json:"_id" mapstructure:"_id"`
+	AltText     string `json:"altText" mapstructure:"altText"`
+	Description string `json:"description" mapstructure:"description"`
+	Metadata    struct {
 		Dimensions struct {
 			AspectRatio float64 `json:"aspectRatio" mapstructure:"aspectRatio"`
 			Height      int     `json:"height" mapstructure:"height"`
 			Width       int     `json:"width" mapstructure:"width"`
-		} `json:"dimensions" mapstructure:"dimensions"`
-	} `json:"metadata" mapstructure:"metadata"`
-	MimeType string `json:"mimeType" mapstructure:"mimeType"`
-	Path     string `json:"path" mapstructure:"path"`
-	URL      string `json:"url" mapstructure:"url"`
+		} `json:"dimensions"`
+	} `json:"metadata"`
+	Path  string `json:"path" mapstructure:"path"`
+	Title string `json:"title" mapstructure:"title"`
+	URL   string `json:"url" mapstructure:"url"`
 }
 
 // A Child is a span or custom inline type that is contained within a block.
