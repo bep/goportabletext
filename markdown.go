@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"io"
 	"strings"
+	"sync"
 
 	"github.com/bep/goportabletext/internal/portabletext"
 )
@@ -18,7 +19,7 @@ const (
 
 var newlineb = []byte(newline)
 
-// ToMarkdown converts the given Portable Text blocks in r to Markdown and writes the result to dst.
+// ToMarkdown converts the given Portable Text blocks in opts.Src to Markdown and writes the result to opts.Dst.
 func ToMarkdown(opts ToMarkdownOptions) error {
 	blocks, ok := opts.Src.(portabletext.Blocks)
 	if !ok {
@@ -28,10 +29,11 @@ func ToMarkdown(opts ToMarkdownOptions) error {
 			return err
 		}
 	}
-	mw := &markdownWriter{
-		dst: opts.Dst, src: blocks,
-		markDefs: make(map[string]portabletext.MarkDef),
-	}
+	mw := getWriter()
+	mw.dst = opts.Dst
+	mw.src = blocks
+	defer putWriter(mw)
+
 	return mw.write()
 }
 
@@ -209,14 +211,7 @@ func (m *markdownWriter) writeBlock(b portabletext.Block) bool {
 
 	m.marksOpen = m.marksOpen[:size]
 	m.marksClose = m.marksClose[:size]
-
-	// Clear the marks.
-	for i := range m.marksOpen {
-		m.marksOpen[i] = m.marksOpen[i][:0]
-	}
-	for i := range m.marksClose {
-		m.marksClose[i] = m.marksClose[i][:0]
-	}
+	m.clearMarks()
 
 	for i, c := range b.Children {
 		atStart := i == 0
@@ -435,6 +430,25 @@ func (m *markdownWriter) writeStyle(b portabletext.Block) {
 	}
 }
 
+func (m *markdownWriter) clear() {
+	m.dst = nil
+	m.src = nil
+	m.err = nil
+	m.currentListItem = ""
+
+	clear(m.markDefs)
+	m.clearMarks()
+}
+
+func (m *markdownWriter) clearMarks() {
+	for i := range m.marksOpen {
+		m.marksOpen[i] = m.marksOpen[i][:0]
+	}
+	for i := range m.marksClose {
+		m.marksClose[i] = m.marksClose[i][:0]
+	}
+}
+
 func in(e string, s []string) bool {
 	for _, v := range s {
 		if v == e {
@@ -442,4 +456,21 @@ func in(e string, s []string) bool {
 		}
 	}
 	return false
+}
+
+var writerPool = sync.Pool{
+	New: func() any {
+		return &markdownWriter{
+			markDefs: make(map[string]portabletext.MarkDef),
+		}
+	},
+}
+
+func getWriter() *markdownWriter {
+	return writerPool.Get().(*markdownWriter)
+}
+
+func putWriter(w *markdownWriter) {
+	w.clear()
+	writerPool.Put(w)
 }
