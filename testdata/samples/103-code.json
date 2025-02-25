@@ -1,0 +1,23 @@
+[
+  {
+    "_key": "5dadc87540cb",
+    "_type": "code",
+    "code": "body {\n  color: blue;\n}",
+    "filename": "foo.css",
+    "language": "css"
+  },
+  {
+    "_key": "fee43313306f",
+    "_type": "block",
+    "children": [
+      {
+        "_key": "0dd47c96668a",
+        "_type": "span",
+        "marks": ["code"],
+        "text": ""
+      }
+    ],
+    "markDefs": [],
+    "style": "normal"
+  }
+]

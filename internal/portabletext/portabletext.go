@@ -38,10 +38,7 @@ type Block struct {
 	// The type field is used to determine which type of block it is.
 	Text  `mapstructure:",squash"`
 	Image `mapstructure:",squash"`
-}
-
-func (b Block) IsImage() bool {
-	return b.Type == "image"
+	Code  `mapstructure:",squash"`
 }
 
 type Style string
@@ -93,6 +90,12 @@ type Asset struct {
 	Path  string `json:"path" mapstructure:"path"`
 	Title string `json:"title" mapstructure:"title"`
 	URL   string `json:"url" mapstructure:"url"`
+}
+
+type Code struct {
+	Code     string `json:"code" mapstructure:"code"`
+	Filename string `json:"filename" mapstructure:"filename"`
+	Language string `json:"language" mapstructure:"language"`
 }
 
 // A Child is a span or custom inline type that is contained within a block.

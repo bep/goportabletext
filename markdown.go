@@ -184,8 +184,12 @@ func (m *markdownWriter) write() error {
 }
 
 func (m *markdownWriter) writeBlock(b portabletext.Block) bool {
-	if b.IsImage() {
+	switch b.Type {
+	case "image":
 		m.writeImage(b.Image)
+		return true
+	case "code":
+		m.writeCode(b.Code)
 		return true
 	}
 
@@ -294,6 +298,19 @@ func (m *markdownWriter) writeChild(i, level int, children []portabletext.Child)
 	if s3 != "" {
 		m.writeString(s3)
 	}
+}
+
+func (m *markdownWriter) writeCode(c portabletext.Code) {
+	m.writeString("```")
+	m.writeString(c.Language)
+	if c.Filename != "" {
+		// Add as markdown attribute.
+		m.writeString(fmt.Sprintf(" {filename=%q}", c.Filename))
+	}
+	m.writeNewline()
+	m.writeString(c.Code)
+	m.writeNewline()
+	m.writeString("```")
 }
 
 func (m *markdownWriter) writeImage(img portabletext.Image) {
