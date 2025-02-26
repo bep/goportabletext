@@ -10,6 +10,7 @@ import (
 	"sync"
 
 	"github.com/bep/goportabletext/internal/portabletext"
+	"slices"
 )
 
 const (
@@ -450,12 +451,7 @@ func (m *markdownWriter) clearMarks() {
 }
 
 func in(e string, s []string) bool {
-	for _, v := range s {
-		if v == e {
-			return true
-		}
-	}
-	return false
+	return slices.Contains(s, e)
 }
 
 var writerPool = sync.Pool{
