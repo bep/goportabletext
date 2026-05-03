@@ -121,7 +121,7 @@ type MarkDef struct {
 }
 
 // The Parse function reads a Portable Text block or array from the src.
-// The src aan be either a io.Reader or a ... TODO1
+// The src can be either a io.Reader or a map[string]any or a []any.
 func Parse(src any) (Blocks, error) {
 	switch v := src.(type) {
 	case io.Reader:
