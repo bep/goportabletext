@@ -378,8 +378,8 @@ func (m *markdownWriter) writeMarks(start bool, i int) {
 		}
 	} else {
 		// Reverse order.
-		for j := len(m.marksClose[i]) - 1; j >= 0; j-- {
-			m.writeMark(start, m.marksClose[i][j])
+		for _, v := range slices.Backward(m.marksClose[i]) {
+			m.writeMark(start, v)
 		}
 	}
 }

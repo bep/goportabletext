@@ -64,7 +64,7 @@ func (b *blockContentToMarkdown) SkipFiles() map[string]bool {
 	}
 	skipFiles := make(map[string]bool)
 
-	for _, file := range strings.Split(string(skipFilesContent), "\n") {
+	for file := range strings.SplitSeq(string(skipFilesContent), "\n") {
 		skipFiles[strings.TrimSpace(file)] = true
 	}
 
